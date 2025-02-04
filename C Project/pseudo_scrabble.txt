@@ -1,0 +1,28 @@
+string player1 = get_string();
+string player2 = get_string();
+
+p1score = get_score(player1);
+p2score = get_score(player2);
+
+if(p1 > p2)
+	write p1 wins
+else
+	write p2 wins
+
+
+get_score(string s)
+	int score = 0;
+	for(int I = 0, j = size(s); I < s; i++)
+		{
+			get_value(s[i]);
+		}
+
+int get_value(char c)
+	char letters[] = {a-z};
+	char scores[] = {scores}
+	
+	for (int i = 0, j = size(letters); i < j; i++)
+	{
+		
+	}
+

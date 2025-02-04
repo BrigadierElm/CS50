@@ -7,11 +7,10 @@
     i = 0;
 
     For each row (pyramid.height)
-        For each col (pyramid.width)
-            i++
-            Print whitespace (Pyramid width - i)
-            Print hashes (i)
-            Print whitespace (Pyramid width - i)
+        i++
+        Print whitespace (Pyramid height - i)
+        Print hashes (i)
+        Print whitespace (Pyramid height - i)
 */
 
 /*  Structures   */

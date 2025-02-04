@@ -1,0 +1,105 @@
+#include <cs50.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
+
+    /*  Pseudocode
+
+        typedef struct
+        {
+            text            -retain user input
+            letter_count    -count letters in string (a-z, A-Z)
+            sentence count  -count full stops in string
+            grade           -retain grade for text
+        } text;
+
+        int input_length = 0;
+
+        get_int Input ("How many texts would you like to process?: ");
+
+        For (int i = 0; i < how many; i++)
+            Get User String Input ("Enter text %i: ")
+
+            input_length = strlen(Input);
+
+            Init struct ("Text_%i", i);
+
+            get_letter_count(inputstring);
+            get_sentence_count(inputstring);
+
+            Calculate grade
+                index = 0.0588 * text_%i.Letters - 0.296 * text_%i.Sentences - 15.8
+    */
+
+// Structs
+typedef struct
+{
+    string input;
+    int letter_count;
+    int sentence_count;
+    int grade;
+} text;
+
+// Prototypes
+text get_input(void);
+int get_letter_count(string input, int input_length);
+int get_word_count(string input, int input_length);
+int get_sentence_count(string input, int input_length);
+int get_grade(int letter_count, int sentence_count);
+
+int main(void)
+{
+
+
+    int input_count = get_int("How many texts would you like to grade today?: ");
+    text texts[input_count];
+    for (int i = 0; i < input_count; i++)
+    {
+        texts[i] = get_input();
+        texts[i].letter_count = get_letter_count(texts[i].input, strlen(texts[i].input));
+        texts[i].sentence_count = get_sentence_count(texts[i].input, strlen(texts[i].input));
+        texts[i].grade = get_grade(texts[i].letter_count, texts[i].sentence_count);
+        printf("Text %i\nLetter count: %i\nSentence count: %i\nReading Grade: %i\n", i + 1, texts[i].letter_count, texts[i].sentence_count, texts[i].grade);
+    }
+}
+
+text get_input(void)
+{
+    text t;
+    t.input = get_string("Enter Text: ");
+    return t;
+}
+
+int get_letter_count(string input, int input_length)
+{
+    int l = 0;
+    for (int i = 0; i < input_length; i++)
+    {
+        if (isalpha(input[i]))
+        {
+            l++;
+        }
+    }
+    return l;
+}
+
+int get_word_count(string input, int input_length)
+{
+
+}
+
+int get_sentence_count(string input, int input_length)
+{
+    int s = 0;
+    for (int i = 0; i < input_length; i++)
+    {
+
+    }
+    return s;
+}
+
+int get_grade(int letter_count, int sentence_count)
+{
+    int grade = 0.0588 * letter_count - 0.296 * sentence_count - 15.8;
+    return grade;
+}
